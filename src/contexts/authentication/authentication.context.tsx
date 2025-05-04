@@ -37,6 +37,8 @@ export function AuthenticationProvider({ children }: AuthenticationProviderProps
 
   const authenticate = useCallback(({ accessToken }: AuthenticateProps) => {
     setAccessTokenOnStorage(accessToken)    
+
+    setStatus(AuthenticationStatus.AUTHENTICATED)
   }, [])
 
   const clearAuthenticationStorage = useCallback(() => {

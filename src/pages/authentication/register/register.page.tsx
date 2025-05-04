@@ -1,23 +1,23 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { registerFormSchema, RegisterFormSchema } from "./schemas/register-form.schema"
 import { zodResolver } from "@hookform/resolvers/zod";
+import { registerAccountService } from "../../../services/authentication/register-account.service";
 
 export function RegisterPage() {
   const { register, handleSubmit } = useForm<RegisterFormSchema>({
     resolver: zodResolver(registerFormSchema),
   })
+  const navigate = useNavigate()
 
   const handleSubmitForm = async (data: RegisterFormSchema) => {
-    console.log(data)
+    try {
+      await registerAccountService(data)
 
-    fetch('http://localhost:3333/register', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+      navigate('/login')
+    } catch (error) {
+      console.error(error)
+    }
 
   }
 

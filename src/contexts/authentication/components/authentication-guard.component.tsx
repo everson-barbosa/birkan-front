@@ -10,6 +10,8 @@ interface AuthenticationGuardProps {
 export function AuthenticationGuard({ children }: AuthenticationGuardProps) {
   const { status } = useAuthentication() 
 
+  console.log(status)
+
   switch (status) {
     case AuthenticationStatus.EXPIRED:
       return <ExpiredRedirect />
