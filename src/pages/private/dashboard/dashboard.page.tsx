@@ -1,15 +1,12 @@
-import { ExamApplicationsSection } from "./components/exam-applications-section/exam-applications-section";
-import { ExamTemplatesSection } from "./components/exam-templates-section/exam-templates-section";
+import { getCurrentUserService } from "@/infra/http/services/authentication/get-current-user.service";
 
 export function DashboardPage() {
+
   return (
     <div className="p-4">
       <h1>Dashboard</h1>
 
-      <ExamTemplatesSection />
-
-      <ExamApplicationsSection />
-
+      <button onClick={() => getCurrentUserService()}>Enviar</button>
     </div>
   )
 }

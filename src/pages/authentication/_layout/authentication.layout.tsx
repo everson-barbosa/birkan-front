@@ -1,14 +1,11 @@
-import { Link, Outlet } from "react-router";
+import { Outlet } from "react-router";
 
 export function AuthenticationLayout() {
   return (
-    <div>
-      <h3>Authentication Layout</h3>
-      <header>
-        <Link to='/'>Go home</Link>
-
+    <div className="bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
+      <div className="w-full max-w-sm">
         <Outlet />
-      </header>
+      </div>
     </div>
   )
 }

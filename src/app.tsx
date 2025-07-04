@@ -1,12 +1,12 @@
 import { RouterProvider } from "react-router"
-import { AuthenticationProvider } from "./contexts/authentication/authentication.context"
-import { router } from "./routes/router"
+import { router } from "./pages/_routes/router"
+import { ThemeProvider } from "./contexts/theme/theme.context"
 
 function App() {
   return (
-    <AuthenticationProvider>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <RouterProvider router={router} />
-    </AuthenticationProvider>    
+    </ThemeProvider>
   )
 }
 
