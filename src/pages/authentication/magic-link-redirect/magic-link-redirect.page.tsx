@@ -23,9 +23,11 @@ export function MagicLinkRedirectPage() {
     try {
       await loginWithMagicLink({ token })
 
-      // navigate('/dashboard')
-
       setStatus(NetworkStatus.SUCCESS)
+      
+      setTimeout(() => {
+        navigate('/dashboard')
+      }, 500)
     } catch (error) {
       console.error(error)
 
@@ -43,7 +45,7 @@ export function MagicLinkRedirectPage() {
     case NetworkStatus.IDLE:
       return <ProgressFeedback text="Idle" value={33} />
     case NetworkStatus.LOADING:
-      return <ProgressFeedback text="Loading..." value={33} />
+      return <ProgressFeedback text="Loading..." value={66} />
     case NetworkStatus.SUCCESS: 
       return <ProgressFeedback text="Success!" value={100} />
   }

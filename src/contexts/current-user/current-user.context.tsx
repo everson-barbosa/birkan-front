@@ -1,16 +1,18 @@
 import { NetworkStatus } from "@/core/enums/network-status";
-import { getCurrentUserService } from "@/infra/http/services/authentication/get-current-user.service";
+import { getCurrentUserService, UserStatus } from "@/infra/http/services/authentication/get-current-user.service";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-interface UserPayload {
+export interface UserPayload {
   id: string
   email: string
   name: string
+  status: UserStatus
 }
 
-interface CurrentUserContextProps {
+export interface CurrentUserContextProps {
   readonly user: UserPayload | null
   readonly status: NetworkStatus
+  readonly getCurrentUserData: () => Promise<void>
 }
 
 export const CurrentUserContext = createContext({} as CurrentUserContextProps)
@@ -45,7 +47,8 @@ export function CurrentUserProvider({ children }: CurrentUserProviderProps) {
   return (
     <CurrentUserContext.Provider value={{
       user,
-      status
+      status,
+      getCurrentUserData
     }}>
       {children}
     </CurrentUserContext.Provider>

@@ -1,5 +1,5 @@
 import { api } from "@/lib/axios"
-import { LOGIN_WITH_EMAIL_URL } from "../../_constants/endpoints/endpoints"
+import { LOGIN_WITH_EMAIL_URL } from "./_constants/endpoints"
 
 interface LoginWithEmailServiceProps {
   readonly email: string

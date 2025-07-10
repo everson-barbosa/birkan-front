@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
-import { loginFormSchema, LoginFormSchema } from "./schemas/login-form.schema";
+import { forgotPasswordSchema, ForgotPasswordSchema } from "./schemas/forgot-password.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFormHandler } from "./hooks/use-form-handler.hook";
 import { Input } from "@/components/ui/input/input.component";
@@ -8,9 +8,9 @@ import { Button } from "@/components/ui/button/button.component";
 import { GalleryVerticalEnd } from "lucide-react";
 import { Label } from "@/components/ui/label/label.component";
 
-export function LoginPage() {
-  const { register, handleSubmit, formState: { isSubmitting } } = useForm<LoginFormSchema>({
-    resolver: zodResolver(loginFormSchema),
+export function ForgotPasswordPage() {
+  const { register, handleSubmit, formState: { isSubmitting } } = useForm<ForgotPasswordSchema>({
+    resolver: zodResolver(forgotPasswordSchema),
   })
   const { handleSubmitForm } = useFormHandler()
 
@@ -46,20 +46,8 @@ export function LoginPage() {
               required
             />
           </div>
-          <div className="grid gap-3">
-            <div className="flex items-center">
-              <Label htmlFor="password">Password</Label>
-              <Link
-                to="/forgot-password"
-                className="ml-auto text-sm underline-offset-4 hover:underline"
-              >
-                Forgot your password?
-              </Link>
-            </div>
-            <Input id="password" type="password" required {...register('password')} />
-          </div>
           <Button type="submit" className="w-full" disabled={isSubmitting}>
-            Login
+            Submit
           </Button>
         </div>
       </div>

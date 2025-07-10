@@ -6,6 +6,7 @@ import { LoginPage } from "@/pages/authentication/login/login.page";
 import { AuthenticationLayout } from "@/pages/authentication/_layout/authentication.layout";
 import { RegisterPage } from "@/pages/authentication/register/register.page";
 import { MagicLinkRedirectPage } from "../authentication/magic-link-redirect/magic-link-redirect.page";
+import { ForgotPasswordPage } from "../authentication/forgot-password/forgot-password.page";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         Component: RegisterPage,
         path: '/register'
+      },
+      {
+        Component: ForgotPasswordPage,
+        path: '/forgot-password'
       },
     ]
   },

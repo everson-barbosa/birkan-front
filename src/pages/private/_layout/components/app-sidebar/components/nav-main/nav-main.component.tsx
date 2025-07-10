@@ -1,4 +1,4 @@
-import { BookOpen, Bot, ChevronRight, Settings2, SquareTerminal, type LucideIcon } from "lucide-react"
+import { Bot, ChevronRight, SquareTerminal, type LucideIcon } from "lucide-react"
 
 import {
   Collapsible,
@@ -66,52 +66,6 @@ const FEATURES: Feature[] = [
     },
     {
       title: "Quantum",
-      url: "#",
-    },
-  ],
-},
-{
-  title: "Documentation",
-  url: "#",
-  icon: BookOpen,
-  items: [
-    {
-      title: "Introduction",
-      url: "#",
-    },
-    {
-      title: "Get Started",
-      url: "#",
-    },
-    {
-      title: "Tutorials",
-      url: "#",
-    },
-    {
-      title: "Changelog",
-      url: "#",
-    },
-  ],
-},
-{
-  title: "Settings",
-  url: "#",
-  icon: Settings2,
-  items: [
-    {
-      title: "General",
-      url: "#",
-    },
-    {
-      title: "Team",
-      url: "#",
-    },
-    {
-      title: "Billing",
-      url: "#",
-    },
-    {
-      title: "Limits",
       url: "#",
     },
   ],
