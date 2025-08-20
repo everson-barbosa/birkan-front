@@ -1,5 +1,5 @@
 import { api } from "@/lib/axios"
-import { SEND_MAGIC_LINK_VIA_EMAIL_URL } from "./_constants/endpoints"
+import { SEND_MAGIC_LINK_VIA_EMAIL_URL } from "./@constants/endpoints"
 
 interface SendMagicLinkViaEmailServiceProps {
   readonly email: string

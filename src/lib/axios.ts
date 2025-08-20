@@ -1,18 +1,23 @@
-import axios from 'axios'
+import { LOGIN_WITH_EMAIL_URL } from "@/infra/http/services/authentication/@constants/endpoints";
+import { navigate } from "@/utils/navigate.util";
+import axios, { AxiosInstance } from "axios";
 
-const api = axios.create({
+const api: AxiosInstance = axios.create({
   withCredentials: true
 })
 
 api.interceptors.response.use(
-  response => response,
-  error => {
-    if (error.response?.status === 401) {
-      window.location.href = '/login';
-    }
+    response => response,
+    error => {
+      const isLoginWithEmailRequest = error.config?.url === LOGIN_WITH_EMAIL_URL
+      const isUnauthorizedError = error.response?.status === 401
 
-    return Promise.reject(error);
-  }
-)
+      if (!isLoginWithEmailRequest && isUnauthorizedError) {
+        navigate('/login')
+      }
+
+      return Promise.reject(error);
+    }
+  )
 
 export { api }

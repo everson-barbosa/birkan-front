@@ -4,7 +4,7 @@ import { NetworkStatus } from "@/core/enums/network-status"
 import { loginWithMagicLink } from "@/infra/http/services/authentication/login-with-magic-link.service"
 import { ProgressFeedback } from "./components/progress-feedback/progress-feedback.component"
 
-export function MagicLinkRedirectPage() {
+export default function MagicLinkRedirectPage() {
   const navigate = useNavigate()
   const [status, setStatus] = useState<NetworkStatus>(NetworkStatus.IDLE)
 

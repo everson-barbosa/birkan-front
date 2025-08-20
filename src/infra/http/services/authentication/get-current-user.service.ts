@@ -1,5 +1,5 @@
+import { GET_CURRENT_USER_URL } from "./@constants/endpoints";
 import { api } from "@/lib/axios";
-import { GET_CURRENT_USER_URL } from "./_constants/endpoints";
 
 export enum UserStatus {
   ACTIVE = 'ACTIVE',

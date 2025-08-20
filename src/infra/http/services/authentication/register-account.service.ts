@@ -1,6 +1,6 @@
 
+import { REGISTER_ACCOUNT_URL } from "./@constants/endpoints"
 import { api } from "@/lib/axios"
-import { REGISTER_ACCOUNT_URL } from "./_constants/endpoints"
 
 interface RegisterAccountServiceProps {
   readonly name: string

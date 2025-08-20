@@ -2,6 +2,8 @@ import { ReactNode } from "react";
 import { useCurrentUser } from "../../hooks/use-current-user.hook";
 import { NetworkStatus } from "@/core/enums/network-status";
 import { ChangePasswordGuard } from "./components/change-password-guard/change-password-guard.component";
+import { CurrentUserGuardError } from "./components/@error/current-user-guard-error.component";
+import { CurrentUserGuardLoading } from "./components/@loading/current-user-guard-loading.component";
 
 interface CurrentUserGuardProps { 
   readonly children: ReactNode
@@ -12,9 +14,9 @@ export function CurrentUserGuard({ children }: CurrentUserGuardProps) {
 
   switch (status) {
     case NetworkStatus.LOADING:
-      return 'Loading...'
+      return <CurrentUserGuardLoading />
     case NetworkStatus.ERROR:
-      return 'Error'
+      return <CurrentUserGuardError />
     case NetworkStatus.SUCCESS:
       return <ChangePasswordGuard>{children}</ChangePasswordGuard>
     default:

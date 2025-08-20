@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input/input.component";
 import { Label } from "@/components/ui/label/label.component";
 import { GalleryVerticalEnd } from "lucide-react";
 
-export function RegisterPage() {
+export default function RegisterPage() {
   const { register, handleSubmit, formState: { isSubmitting } } = useForm<RegisterFormSchema>({
     resolver: zodResolver(registerFormSchema),
   })

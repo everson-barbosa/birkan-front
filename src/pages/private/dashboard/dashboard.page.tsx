@@ -1,12 +1,14 @@
-import { getCurrentUserService } from "@/infra/http/services/authentication/get-current-user.service";
+import { findExamApplicationsService } from "@/infra/http/services/exams/find-exam-applications.service";
 
-export function DashboardPage() {
-
+export default function DashboardPage() {
   return (
     <div className="p-4">
-      <h1>Dashboard</h1>
-
-      <button onClick={() => getCurrentUserService()}>Enviar</button>
+      <button onClick={() => findExamApplicationsService({
+        order: 'asc',
+        orderBy: 'createdAt',
+        page: 1,
+        perPage: 20
+      })}>Enviar</button>
     </div>
   )
 }

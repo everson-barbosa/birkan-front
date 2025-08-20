@@ -1,5 +1,5 @@
 const BASE_URL = {
-  AUTH: 'http://localhost:3333'
+  AUTH: 'http://localhost:3334'
 }
 
 export const LOGIN_WITH_EMAIL_URL = `${BASE_URL.AUTH}/login/email`

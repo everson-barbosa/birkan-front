@@ -1,5 +1,5 @@
+import { RESET_PASSWORD_URL } from "./@constants/endpoints"
 import { api } from "@/lib/axios"
-import { RESET_PASSWORD_URL } from "./_constants/endpoints"
 
 interface ResetPasswordServiceProps {
   readonly newPassword: string

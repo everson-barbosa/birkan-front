@@ -1,4 +1,4 @@
-import { NOTIFICATIONS_SUBSCRIBER_URL } from "./_constants/endpoints"
+import { NOTIFICATIONS_SUBSCRIBER_URL } from "./@constants/endpoints"
 
 export interface NotificationMessageEvent {
   id: string

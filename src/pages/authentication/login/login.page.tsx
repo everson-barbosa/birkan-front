@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button/button.component";
 import { GalleryVerticalEnd } from "lucide-react";
 import { Label } from "@/components/ui/label/label.component";
 
-export function LoginPage() {
+export default function LoginPage() {
   const { register, handleSubmit, formState: { isSubmitting } } = useForm<LoginFormSchema>({
     resolver: zodResolver(loginFormSchema),
   })
