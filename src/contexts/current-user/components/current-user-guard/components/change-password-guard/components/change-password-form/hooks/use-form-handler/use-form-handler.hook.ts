@@ -1,4 +1,4 @@
-import { resetPasswordService } from "@/infra/http/services/authentication/reset-password.service"
+import { resetPasswordService } from "@/services/authentication/reset-password.service"
 import { ChangePasswordFormSchema } from "../../schemas/change-password-form.schema"
 import { useCurrentUser } from "@/contexts/current-user/hooks/use-current-user.hook"
 

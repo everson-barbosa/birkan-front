@@ -1,4 +1,4 @@
-import { LOGIN_WITH_EMAIL_URL } from "@/infra/http/services/authentication/@constants/endpoints";
+import { LOGIN_WITH_EMAIL_URL } from "@/services/authentication/@constants/endpoints";
 import { navigate } from "@/utils/navigate.util";
 import axios, { AxiosInstance } from "axios";
 

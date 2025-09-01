@@ -1,8 +1,7 @@
-import { notificationsSubscriber } from "@/infra/http/subscribers/notifications/notifications-subscriber.service";
 import { createContext, ReactNode } from "react";
 
 interface NotificationsContextProps {
-  eventSource: EventSource
+  eventSource: number
 }
 
 export const NotificationsContext = createContext({} as NotificationsContextProps)
@@ -12,12 +11,12 @@ interface NotificationsProviderProps {
 }
 
 export function NotificationsProvider({ children }: NotificationsProviderProps) {
-  const eventSource = notificationsSubscriber({
-    onMessage: (message) => console.log(message)
-  })
+
 
   return (
-    <NotificationsContext.Provider value={{eventSource}}>
+    <NotificationsContext.Provider value={{
+      eventSource: 1 
+    }}>
       {children}
     </NotificationsContext.Provider>
   )

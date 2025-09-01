@@ -1,4 +1,4 @@
-export enum NetworkStatus {
+export enum RequestStatus {
   IDLE,
   LOADING,
   ERROR,

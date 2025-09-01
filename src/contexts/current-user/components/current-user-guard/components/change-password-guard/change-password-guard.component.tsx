@@ -1,5 +1,5 @@
 import { useCurrentUser } from "@/contexts/current-user/hooks/use-current-user.hook";
-import { UserStatus } from "@/infra/http/services/authentication/get-current-user.service";
+import { UserStatus } from "@/services/authentication/get-current-user.service";
 import { ReactNode } from "react";
 import { ChangePasswordForm } from "./components/change-password-form/change-password-form.component";
 

@@ -1,4 +1,4 @@
-import { registerAccountService } from "@/infra/http/services/authentication/register-account.service"
+import { registerAccountService } from "@/services/authentication/register-account.service"
 import { RegisterFormSchema } from "../schemas/register-form.schema"
 import { toast } from "sonner"
 

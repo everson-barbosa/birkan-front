@@ -1,4 +1,4 @@
-import { Bot, ChevronRight, SquareTerminal, type LucideIcon } from "lucide-react"
+import { ChevronRight, SchoolIcon, type LucideIcon } from "lucide-react"
 
 import {
   Collapsible,
@@ -16,6 +16,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar/sidebar.component"
+import { Link } from "react-router"
 
 interface Item {
   title: string
@@ -31,45 +32,18 @@ interface Feature {
 }
 
 const FEATURES: Feature[] = [
-{
-  title: "Playground",
-  url: "#",
-  icon: SquareTerminal,
-  isActive: true,
-  items: [
-    {
-      title: "History",
-      url: "#",
-    },
-    {
-      title: "Starred",
-      url: "#",
-    },
-    {
-      title: "Settings",
-      url: "#",
-    },
-  ],
-},
-{
-  title: "Models",
-  url: "#",
-  icon: Bot,
-  items: [
-    {
-      title: "Genesis",
-      url: "#",
-    },
-    {
-      title: "Explorer",
-      url: "#",
-    },
-    {
-      title: "Quantum",
-      url: "#",
-    },
-  ],
-},
+  {
+    title: "School Management",
+    url: "/dashboard",
+    icon: SchoolIcon,
+    isActive: true,
+    items: [
+      {
+        title: "Exam applications",
+        url: "/exam-applications",
+      },
+    ],
+  }
 ]
 
 export function NavMain() {
@@ -81,10 +55,10 @@ export function NavMain() {
           <Collapsible key={feature.title} asChild defaultOpen={feature.isActive}>
             <SidebarMenuItem>
               <SidebarMenuButton asChild tooltip={feature.title}>
-                <a href={feature.url}>
+                <Link to={feature.url}>
                   <feature.icon />
                   <span>{feature.title}</span>
-                </a>
+                </Link>
               </SidebarMenuButton>
               {feature.items?.length ? (
                 <>
@@ -99,9 +73,9 @@ export function NavMain() {
                       {feature.items?.map((subItem) => (
                         <SidebarMenuSubItem key={subItem.title}>
                           <SidebarMenuSubButton asChild>
-                            <a href={subItem.url}>
+                            <Link to={subItem.url}>
                               <span>{subItem.title}</span>
-                            </a>
+                            </Link>
                           </SidebarMenuSubButton>
                         </SidebarMenuSubItem>
                       ))}

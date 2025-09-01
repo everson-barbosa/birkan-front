@@ -1,4 +1,4 @@
-import { sendMagicLinkViaEmailService } from "@/infra/http/services/authentication/send-magic-link-via-email.service"
+import { sendMagicLinkViaEmailService } from "@/services/authentication/send-magic-link-via-email.service"
 import { ForgotPasswordSchema } from "../schemas/forgot-password.schema"
 
 export function useFormHandler() {

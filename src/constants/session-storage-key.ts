@@ -1,0 +1,1 @@
+export const SESSION_STORAGE_LAST_ROUTE_KEY = '@birkan-front:last-route'

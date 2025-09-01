@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router"
 import { useEffect, useState } from "react"
-import { NetworkStatus } from "@/core/enums/network-status"
-import { loginWithMagicLink } from "@/infra/http/services/authentication/login-with-magic-link.service"
+import { RequestStatus } from "@/core/enums/request-status"
+import { loginWithMagicLink } from "@/services/authentication/login-with-magic-link.service"
 import { ProgressFeedback } from "./components/progress-feedback/progress-feedback.component"
 
 export default function MagicLinkRedirectPage() {
   const navigate = useNavigate()
-  const [status, setStatus] = useState<NetworkStatus>(NetworkStatus.IDLE)
+  const [status, setStatus] = useState<RequestStatus>(RequestStatus.IDLE)
 
   const urlSearchParams = new URLSearchParams(window.location.search)
   const token = urlSearchParams.get('token')
@@ -18,12 +18,12 @@ export default function MagicLinkRedirectPage() {
       return
     }
 
-    setStatus(NetworkStatus.LOADING)
+    setStatus(RequestStatus.LOADING)
 
     try {
       await loginWithMagicLink({ token })
 
-      setStatus(NetworkStatus.SUCCESS)
+      setStatus(RequestStatus.SUCCESS)
       
       setTimeout(() => {
         navigate('/dashboard')
@@ -31,7 +31,7 @@ export default function MagicLinkRedirectPage() {
     } catch (error) {
       console.error(error)
 
-      setStatus(NetworkStatus.ERROR)
+      setStatus(RequestStatus.ERROR)
 
       navigate('/login')
     }
@@ -42,11 +42,11 @@ export default function MagicLinkRedirectPage() {
   }, [])
 
   switch(status) {
-    case NetworkStatus.IDLE:
+    case RequestStatus.IDLE:
       return <ProgressFeedback text="Idle" value={33} />
-    case NetworkStatus.LOADING:
+    case RequestStatus.LOADING:
       return <ProgressFeedback text="Loading..." value={66} />
-    case NetworkStatus.SUCCESS: 
+    case RequestStatus.SUCCESS: 
       return <ProgressFeedback text="Success!" value={100} />
   }
 

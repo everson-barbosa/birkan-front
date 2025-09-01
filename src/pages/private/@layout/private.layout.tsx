@@ -13,12 +13,20 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar/sidebar.component"
+import { SESSION_STORAGE_LAST_ROUTE_KEY } from "@/constants/session-storage-key"
 import { CurrentUserGuard } from "@/contexts/current-user/components/current-user-guard/current-user-guard.component"
 import { CurrentUserProvider } from "@/contexts/current-user/current-user.context"
 import { NotificationsProvider } from "@/contexts/notifications/notifications.context"
-import { Outlet } from "react-router"
+import { useEffect } from "react"
+import { Outlet, useLocation } from "react-router"
 
 export function PrivateLayout() {
+  const location = useLocation()
+
+  useEffect(() => {
+    sessionStorage.setItem(SESSION_STORAGE_LAST_ROUTE_KEY, JSON.stringify(location))
+  }, [location])
+
   return (
     <CurrentUserProvider>
       <CurrentUserGuard>

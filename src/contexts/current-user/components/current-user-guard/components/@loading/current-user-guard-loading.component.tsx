@@ -1,3 +1,3 @@
 export function CurrentUserGuardLoading() {
-  return 'Loading...'
+  return null
 }
