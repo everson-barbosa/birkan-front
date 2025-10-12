@@ -1,7 +1,7 @@
-import { RouterProvider } from "react-router"
-import { router } from "./pages/@routes/router"
-import { ThemeProvider } from "./contexts/theme/theme.context"
-import { Toaster } from "./components/ui/sooner/sonner.component"
+import { RouterProvider } from "react-router";
+import { router } from "./pages/@routes/router";
+import { ThemeProvider } from "./contexts/theme/theme.context";
+import { Toaster } from "./components/ui/sooner/sonner.component";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <Toaster />
       <RouterProvider router={router} />
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+export default App;

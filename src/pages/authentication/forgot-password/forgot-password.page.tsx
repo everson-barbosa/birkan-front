@@ -29,9 +29,9 @@ export default function ForgotPasswordPage() {
           </a>
           <h1 className="text-xl font-bold">Welcome to Birkan.</h1>
           <div className="text-center text-sm">
-            Don&apos;t have an account?{" "}
-            <Link to="/register" className="underline underline-offset-4">
-              Sign up
+            Do have an account?{" "}
+            <Link to="/login" className="underline underline-offset-4">
+              Sign in
             </Link>
           </div>
         </div>

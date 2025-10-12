@@ -1,5 +1,5 @@
-import * as React from "react"
-import { LifeBuoy, Send, type LucideIcon } from "lucide-react"
+import * as React from "react";
+import { LifeBuoy, Send, type LucideIcon } from "lucide-react";
 
 import {
   SidebarGroup,
@@ -7,12 +7,12 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar/sidebar.component"
+} from "@/components/ui/sidebar/sidebar.component";
 
 interface Item {
-  title: string
-  url: string
-  icon: LucideIcon
+  title: string;
+  url: string;
+  icon: LucideIcon;
 }
 
 const ITEMS: Item[] = [
@@ -25,13 +25,12 @@ const ITEMS: Item[] = [
     title: "Feedback",
     url: "#",
     icon: Send,
-  }
-]
+  },
+];
 
-export function NavSecondary({
+export function Footer({
   ...props
-}: {
-} & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
+}: {} & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
   return (
     <SidebarGroup {...props}>
       <SidebarGroupContent>
@@ -49,5 +48,5 @@ export function NavSecondary({
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
-  )
+  );
 }

@@ -1,31 +1,24 @@
-import { AppSidebar } from "./components/app-sidebar/app-sidebar.component"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb/breadcrumb.component"
-import { Separator } from "@/components/ui/separator/separator.component"
+import { AppSidebar } from "./@components/app-sidebar/app-sidebar.component";
 import {
   SidebarInset,
   SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar/sidebar.component"
-import { SESSION_STORAGE_LAST_ROUTE_KEY } from "@/constants/session-storage-key"
-import { CurrentUserGuard } from "@/contexts/current-user/components/current-user-guard/current-user-guard.component"
-import { CurrentUserProvider } from "@/contexts/current-user/current-user.context"
-import { NotificationsProvider } from "@/contexts/notifications/notifications.context"
-import { useEffect } from "react"
-import { Outlet, useLocation } from "react-router"
+} from "@/components/ui/sidebar/sidebar.component";
+import { SESSION_STORAGE_LAST_ROUTE_KEY } from "@/constants/session-storage-key";
+import { CurrentUserGuard } from "@/contexts/current-user/components/current-user-guard/current-user-guard.component";
+import { CurrentUserProvider } from "@/contexts/current-user/current-user.context";
+import { NotificationsProvider } from "@/contexts/notifications/notifications.context";
+import { useEffect } from "react";
+import { Outlet, useLocation } from "react-router";
 
 export function PrivateLayout() {
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
-    sessionStorage.setItem(SESSION_STORAGE_LAST_ROUTE_KEY, JSON.stringify(location))
-  }, [location])
+    sessionStorage.setItem(
+      SESSION_STORAGE_LAST_ROUTE_KEY,
+      JSON.stringify(location)
+    );
+  }, [location]);
 
   return (
     <CurrentUserProvider>
@@ -34,28 +27,6 @@ export function PrivateLayout() {
           <SidebarProvider>
             <AppSidebar />
             <SidebarInset>
-              <header className="flex h-16 shrink-0 items-center gap-2">
-                <div className="flex items-center gap-2 px-4">
-                  <SidebarTrigger className="-ml-1" />
-                  <Separator
-                    orientation="vertical"
-                    className="mr-2 data-[orientation=vertical]:h-4"
-                  />
-                  <Breadcrumb>
-                    <BreadcrumbList>
-                      <BreadcrumbItem className="hidden md:block">
-                        <BreadcrumbLink href="#">
-                          Building Your Application
-                        </BreadcrumbLink>
-                      </BreadcrumbItem>
-                      <BreadcrumbSeparator className="hidden md:block" />
-                      <BreadcrumbItem>
-                        <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                      </BreadcrumbItem>
-                    </BreadcrumbList>
-                  </Breadcrumb>
-                </div>
-              </header>
               <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
                 <Outlet />
               </div>
@@ -64,5 +35,5 @@ export function PrivateLayout() {
         </NotificationsProvider>
       </CurrentUserGuard>
     </CurrentUserProvider>
-  )
+  );
 }

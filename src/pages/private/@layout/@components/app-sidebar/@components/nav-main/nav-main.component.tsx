@@ -1,10 +1,14 @@
-import { ChevronRight, SchoolIcon, type LucideIcon } from "lucide-react"
+import {
+  ChevronRight,
+  ToolCase as UsefullToolsIcon,
+  type LucideIcon,
+} from "lucide-react";
 
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible/collapsible.component"
+} from "@/components/ui/collapsible/collapsible.component";
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -15,36 +19,36 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@/components/ui/sidebar/sidebar.component"
-import { Link } from "react-router"
+} from "@/components/ui/sidebar/sidebar.component";
+import { Link } from "react-router";
 
 interface Item {
-  title: string
-  url: string
+  title: string;
+  url: string;
 }
 
 interface Feature {
-  title: string
-  url: string
-  icon: LucideIcon
-  isActive?: boolean
-  items?: Item[]
+  title: string;
+  url: string;
+  icon: LucideIcon;
+  isActive?: boolean;
+  items?: Item[];
 }
 
 const FEATURES: Feature[] = [
   {
-    title: "School Management",
-    url: "/dashboard",
-    icon: SchoolIcon,
+    title: "Usefull tools",
+    url: "/usefull-tools",
+    icon: UsefullToolsIcon,
     isActive: true,
     items: [
       {
-        title: "Exam applications",
-        url: "/exam-applications",
+        title: "Planning poker",
+        url: "/planning-poker",
       },
     ],
-  }
-]
+  },
+];
 
 export function NavMain() {
   return (
@@ -52,7 +56,11 @@ export function NavMain() {
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
       <SidebarMenu>
         {FEATURES.map((feature) => (
-          <Collapsible key={feature.title} asChild defaultOpen={feature.isActive}>
+          <Collapsible
+            key={feature.title}
+            asChild
+            defaultOpen={feature.isActive}
+          >
             <SidebarMenuItem>
               <SidebarMenuButton asChild tooltip={feature.title}>
                 <Link to={feature.url}>
@@ -88,5 +96,5 @@ export function NavMain() {
         ))}
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }

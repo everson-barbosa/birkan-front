@@ -1,14 +1,10 @@
-import {
-  Bell,
-  ChevronsUpDown,
-  CreditCard,
-} from "lucide-react"
+import { Bell, ChevronsUpDown, CreditCard } from "lucide-react";
 
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/components/ui/avatar/avatar.component"
+} from "@/components/ui/avatar/avatar.component";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,33 +13,33 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu/dropdown-menu.component"
+} from "@/components/ui/dropdown-menu/dropdown-menu.component";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar/sidebar.component"
-import { useCurrentUser } from "@/contexts/current-user/hooks/use-current-user.hook"
-import { LogoutButton } from "./components/logout-button/logout-button.component"
+} from "@/components/ui/sidebar/sidebar.component";
+import { useCurrentUser } from "@/contexts/current-user/hooks/use-current-user.hook";
+import { LogoutButton } from "./@components/logout-button/logout-button.component";
 
 interface User {
-  name: string
-  email: string
-  avatar: string
+  name: string;
+  email: string;
+  avatar: string;
 }
 
 const USER: User = {
   name: "shadcn",
   email: "m@example.com",
   avatar: "https://github.com/everson-barbosa.png",
-}
+};
 
 export function NavUser() {
-  const { isMobile } = useSidebar()
-  const { user } = useCurrentUser()
+  const { isMobile } = useSidebar();
+  const { user } = useCurrentUser();
 
-  if (!user) return null
+  if (!user) return null;
 
   return (
     <SidebarMenu>
@@ -101,5 +97,5 @@ export function NavUser() {
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
-  )
+  );
 }

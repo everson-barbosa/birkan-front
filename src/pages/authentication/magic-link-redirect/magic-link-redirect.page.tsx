@@ -1,58 +1,55 @@
-import { useNavigate } from "react-router"
-import { useEffect, useState } from "react"
-import { RequestStatus } from "@/core/enums/request-status"
-import { loginWithMagicLink } from "@/services/authentication/login-with-magic-link.service"
-import { ProgressFeedback } from "./components/progress-feedback/progress-feedback.component"
+import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { RequestStatus } from "@/core/enums/request-status";
+import { loginWithMagicLink } from "@/services/authentication/login-with-magic-link.service";
+import { ProgressFeedback } from "./components/progress-feedback/progress-feedback.component";
+import { DEFAULT_ROOT_AFTER_LOGIN } from "@/constants/navigate";
 
 export default function MagicLinkRedirectPage() {
-  const navigate = useNavigate()
-  const [status, setStatus] = useState<RequestStatus>(RequestStatus.IDLE)
+  const navigate = useNavigate();
+  const [status, setStatus] = useState<RequestStatus>(RequestStatus.IDLE);
 
-  const urlSearchParams = new URLSearchParams(window.location.search)
-  const token = urlSearchParams.get('token')
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const token = urlSearchParams.get("token");
 
   const handleLoginWithMagicLink = async () => {
     if (!token) {
-      navigate('/login')
+      navigate("/login");
 
-      return
+      return;
     }
 
-    setStatus(RequestStatus.LOADING)
+    setStatus(RequestStatus.LOADING);
 
     try {
-      await loginWithMagicLink({ token })
+      await loginWithMagicLink({ token });
 
-      setStatus(RequestStatus.SUCCESS)
-      
+      setStatus(RequestStatus.SUCCESS);
+
       setTimeout(() => {
-        navigate('/dashboard')
-      }, 500)
+        navigate(DEFAULT_ROOT_AFTER_LOGIN);
+      }, 500);
     } catch (error) {
-      console.error(error)
+      console.error(error);
 
-      setStatus(RequestStatus.ERROR)
+      setStatus(RequestStatus.ERROR);
 
-      navigate('/login')
+      navigate("/login");
     }
-  }
+  };
 
   useEffect(() => {
-    handleLoginWithMagicLink()
-  }, [])
+    handleLoginWithMagicLink();
+  }, []);
 
-  switch(status) {
+  switch (status) {
     case RequestStatus.IDLE:
-      return <ProgressFeedback text="Idle" value={33} />
+      return <ProgressFeedback text="Idle" value={33} />;
     case RequestStatus.LOADING:
-      return <ProgressFeedback text="Loading..." value={66} />
-    case RequestStatus.SUCCESS: 
-      return <ProgressFeedback text="Success!" value={100} />
+      return <ProgressFeedback text="Loading..." value={66} />;
+    case RequestStatus.SUCCESS:
+      return <ProgressFeedback text="Success!" value={100} />;
   }
 
-  return (
-    <div>
-      Magic Link
-    </div>
-  )
+  return <div>Magic Link</div>;
 }
