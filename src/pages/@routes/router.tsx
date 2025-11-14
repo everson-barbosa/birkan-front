@@ -1,13 +1,15 @@
 import { createBrowserRouter } from "react-router";
 import { HomePage } from "@/pages/home.page";
-import { PrivateLayout } from "../private/@layout/private.layout";
+import { PrivateLayout } from "../private/@layouts/private.layout";
 import UsefullTools from "../private/usefull-tools/usefull-tools.page";
 import { AuthenticationLayout } from "../authentication/@layout/authentication.layout";
 import LoginPage from "../authentication/login/login.page";
 import MagicLinkRedirectPage from "../authentication/magic-link-redirect/magic-link-redirect.page";
 import RegisterPage from "../authentication/register/register.page";
 import ForgotPasswordPage from "../authentication/forgot-password/forgot-password.page";
-import PlanningPokerPage from "../private/usefull-tools/@pages/planning-poker/planning-poker.page";
+import PlanningPokerPage from "../private/planning-poker/pages/planning-poker-root/planning-poker.page";
+import { PlanningPokerLayout } from "../private/planning-poker/layouts/planning-poker.layout";
+import PlanningPokerRoomPage from "../private/planning-poker/pages/planning-poker-room/planning-poker-room.page";
 
 export const router = createBrowserRouter([
   {
@@ -44,8 +46,17 @@ export const router = createBrowserRouter([
     children: [
       { Component: UsefullTools, path: "/usefull-tools" },
       {
-        Component: PlanningPokerPage,
-        path: "/planning-poker",
+        Component: PlanningPokerLayout,
+        children: [
+          {
+            Component: PlanningPokerPage,
+            path: "/planning-poker",
+          },
+          {
+            Component: PlanningPokerRoomPage,
+            path: "/planning-poker/room/:roomId",
+          },
+        ],
       },
     ],
   },

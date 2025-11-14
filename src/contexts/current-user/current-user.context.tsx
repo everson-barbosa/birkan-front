@@ -1,56 +1,61 @@
 import { RequestStatus } from "@/core/enums/request-status";
-import { getCurrentUserService, UserStatus } from "@/services/authentication/get-current-user.service";
+import {
+  getCurrentUserService,
+  UserStatus,
+} from "@/services/authentication/get-current-user.service";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
 export interface UserPayload {
-  id: string
-  email: string
-  name: string
-  status: UserStatus
+  id: string;
+  email: string;
+  name: string;
+  status: UserStatus;
 }
 
 export interface CurrentUserContextProps {
-  readonly user: UserPayload | null
-  readonly status: RequestStatus
-  readonly getCurrentUserData: () => Promise<void>
+  readonly user: UserPayload;
+  readonly status: RequestStatus;
+  readonly getCurrentUserData: () => Promise<void>;
 }
 
-export const CurrentUserContext = createContext({} as CurrentUserContextProps)
+export const CurrentUserContext = createContext({} as CurrentUserContextProps);
 
 interface CurrentUserProviderProps {
-  readonly children: ReactNode
+  readonly children: ReactNode;
 }
 
 export function CurrentUserProvider({ children }: CurrentUserProviderProps) {
-  const [user, setUser] = useState<UserPayload | null>(null)
-  const [status, setStatus] = useState<RequestStatus>(RequestStatus.IDLE)
+  const [user, setUser] = useState<UserPayload | null>(null);
+  const [status, setStatus] = useState<RequestStatus>(RequestStatus.IDLE);
 
   const getCurrentUserData = async () => {
-    setStatus(RequestStatus.LOADING)
-    
+    setStatus(RequestStatus.LOADING);
+
     try {
-      const user = await getCurrentUserService()
+      const user = await getCurrentUserService();
 
-      setUser(user.data)
-      setStatus(RequestStatus.SUCCESS)
+      setUser(user.data);
+      setStatus(RequestStatus.SUCCESS);
     } catch (error) {
-      console.error(error)
+      console.error(error);
 
-      setStatus(RequestStatus.ERROR)
+      setStatus(RequestStatus.ERROR);
     }
-  }
+  };
 
   useEffect(() => {
-    getCurrentUserData()
-  }, [])
+    getCurrentUserData();
+  }, []);
 
   return (
-    <CurrentUserContext.Provider value={{
-      user,
-      status,
-      getCurrentUserData
-    }}>
+    <CurrentUserContext.Provider
+      value={{
+        user: user as UserPayload,
+        status,
+        getCurrentUserData,
+      }}
+    >
       {children}
     </CurrentUserContext.Provider>
-  )
+  );
 }

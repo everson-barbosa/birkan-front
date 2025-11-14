@@ -1,7 +1,7 @@
 import { Breadcrumbs } from "../@components/breadcrumbs/breadcrumbs.component";
 import { Container } from "../@components/container/container.component";
 import { Header } from "../@components/header/header.component";
-import { ToolCard } from "./@components/tool-card/tool-card.component";
+import { ToolCard } from "./components/tool-card/tool-card.component";
 
 export default function UsefullTools() {
   return (

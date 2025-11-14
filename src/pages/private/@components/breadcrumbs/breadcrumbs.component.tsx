@@ -7,6 +7,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb/breadcrumb.component";
 import { Link } from "react-router";
+import { Fragment } from "react";
 
 interface Breadcrumb {
   readonly text: string;
@@ -26,7 +27,7 @@ export function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
           const hasLink = !!breadcrumb?.link;
 
           return (
-            <>
+            <Fragment key={breadcrumb.text}>
               <BreadcrumbItem className={hasLink ? "hidden md:block" : ""}>
                 {hasLink ? (
                   <BreadcrumbLink asChild>
@@ -39,7 +40,7 @@ export function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
               {!isLastBreadcrumb && (
                 <BreadcrumbSeparator className="hidden md:block" />
               )}
-            </>
+            </Fragment>
           );
         })}
       </BreadcrumbList>
